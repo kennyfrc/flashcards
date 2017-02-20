@@ -3,5 +3,5 @@
   <h2> Card #<%=card.id%> </h2><br>
   Original Text: <%= card.original_text %><br>
   Translated Text: <%= card.translated_text %><br>
-  Review Date: <%= card.review_date %>
-<% end %> 
+  Review Date: <%= card.review_date.strftime("%d/%m/%Y") %>
+<% end %>

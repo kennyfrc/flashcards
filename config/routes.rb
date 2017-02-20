@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  get 'cards/index'
-
-  get 'cards/new'
-
-  get 'cards/show'
+  resources :cards, only: [:index, :show, :new]
 
   root to: 'home#index'
 
