@@ -1,0 +1,7 @@
+<h1>Flashcard Collection</h1>
+<% @cards.each do |card| %>
+  <h2> Card #<%=card.id%> </h2><br>
+  Original Text: <%= card.original_text %><br>
+  Translated Text: <%= card.translated_text %><br>
+  Review Date: <%= card.review_date %>
+<% end %> 
