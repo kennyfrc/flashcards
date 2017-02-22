@@ -1,7 +1,14 @@
 <h1>Flashcard Collection</h1>
+
+<%= link_to 'Create a New Card', new_card_path %><br>
+
 <% @cards.each do |card| %>
   <h2> Card #<%=card.id%> </h2><br>
   Original Text: <%= card.original_text %><br>
   Translated Text: <%= card.translated_text %><br>
-  Review Date: <%= card.review_date.strftime("%d/%m/%Y") %>
+  Review Date: <%= card.review_date.strftime("%d/%m/%Y") %><br>
+  <%= link_to "Edit Card", edit_card_path(card) %><br>
+  <%= link_to "Delete Card", card_path(card), method: :delete, data: {confirm: "Are you sure?"} %>
 <% end %>
+
+
