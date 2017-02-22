@@ -1,0 +1,16 @@
+<%= form_for @card do |c| %>
+<p>
+  <%= c.label :front_of_card %>
+  <%= c.text_area :original_text %>
+</p>
+
+<p>
+  <%= c.label :back_of_card %>
+  <%= c.text_area :translated_text %>
+</p>
+
+<p>
+  <%= c.submit %>
+</p>
+
+<% end %>

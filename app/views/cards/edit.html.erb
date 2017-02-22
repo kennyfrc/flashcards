@@ -1,0 +1,6 @@
+<h1>Edit a Card</h1>
+
+<%= link_to 'Back to All cards', cards_path %><br>
+<%= link_to "Delete Card", card_path(@card), method: :delete, data: {confirm: "Are you sure?"} %><br>
+
+<%= render 'form' %>

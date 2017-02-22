@@ -1,19 +1,5 @@
-<h1>Cards#new</h1>
-<p>Find me in app/views/cards/new.html.erb</p>
+<h1>Create a Card</h1>
 
-<%= form_for :card, url: cards_path do |c| %>
-<p>
-  <%= c.label :front_of_card %>
-  <%= c.text_area :original_text %>
-</p>
+<%= link_to 'Back to All cards', cards_path %><br>
 
-<p>
-  <%= c.label :back_of_card %>
-  <%= c.text_area :translated_text %>
-</p>
-
-<p>
-  <%= c.submit %>
-</p>
-
-<% end %>
+<%= render 'form' %>
