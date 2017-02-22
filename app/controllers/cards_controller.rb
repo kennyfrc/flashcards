@@ -7,13 +7,19 @@ class CardsController < ApplicationController
   end
 
   def show
+    @card = Card.find(params[:id])
   end
 
   def create
     @card = Card.new(article_params)
 
-    @card.save
-    redirect_to @card
+    if @card.save
+      flash[:notice] = "Card successfully created!"
+      redirect_to @card
+    else
+      flash[:error] = "Please complete the fields or use a valid translation."
+      render action: "new"
+    end
   end
 
   private
