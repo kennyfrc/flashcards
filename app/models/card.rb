@@ -1,15 +1,15 @@
 class Card < ApplicationRecord
-  validates :original_text, :translated_text, :review_date, presence: true
+  validates :original_text, :translated_text, presence: true
   validate :texts_are_not_the_same?
 
-  before_validation :default_review_algorithm
+  before_create :default_review_algorithm
 
   REVIEW_TIME_GAP = 3
 
   protected
 
   def default_review_algorithm
-    self.review_date = DateTime.now + REVIEW_TIME_GAP
+    self.review_date = DateTime.now + REVIEW_TIME_GAP if review_date.nil?
   end
 
   def texts_are_not_the_same?
