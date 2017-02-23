@@ -17,6 +17,9 @@ gem 'rails', '~> 5.0.1'
  group :development do
    gem 'sqlite3'
  end
+# Use nokogiri for seed data
+gem 'nokogiri'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use simple_form for forms
