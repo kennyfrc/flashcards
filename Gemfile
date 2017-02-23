@@ -19,6 +19,8 @@ gem 'rails', '~> 5.0.1'
  end
 # Use nokogiri for seed data
 gem 'nokogiri'
+# Use mechanize to automate a click
+gem 'mechanize'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'

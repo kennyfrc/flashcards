@@ -1,6 +1,15 @@
 require 'open-uri'
+require 'mechanize'
 
-table_nodes = Nokogiri::HTML(open("http://www.languagedaily.com/learn-german/vocabulary/common-german-words")).xpath("//tr//td")
+agent = Mechanize.new
+all_links = []
+initial_link = 'http://www.languagedaily.com/learn-german/vocabulary/common-german-words'
+page = agent.get(initial_link)
+other_links = page.links.uniq {|link| link.uri.to_s.match('/common-german-words-')}
+other_links.each do |link|
+  all_links << "http://www.languagedaily.com#{link.uri}" if link.uri.to_s != ''
+end
+all_links = all_links.unshift(initial_link)
 
 def indexes_of_eng_translations(nodes)
   translation_indexes = []
@@ -28,18 +37,35 @@ def english_translations(nodes, indexes)
   translations
 end
 
-eng_indexes = indexes_of_eng_translations(table_nodes)
-eng_translations =  english_translations(table_nodes, eng_indexes)
-de_words = german_words(table_nodes)
-translation_pairs = de_words.zip(eng_translations)
+def generate_translations(nodes, english_indexes)
+  eng_translations =  english_translations(nodes, english_indexes)
+  de_words = german_words(nodes)
+  translation_pairs = de_words.zip(eng_translations)
 
-translation_pairs.each do |pair|
-  Card.create(
-    original_text: pair[0],
-    translated_text: pair[1]
-  )
+  translation_pairs.each do |pair|
+    Card.create(
+      original_text: pair[0],
+      translated_text: pair[1]
+    )
+  end
+
+  Card.all
 end
 
+def seed_data(links)
+  translations = ''
+  links.each do |link|
+    table_nodes = Nokogiri::HTML(open(link)).xpath("//tr//td")
+    eng_indexes = indexes_of_eng_translations(table_nodes)
+    translations = generate_translations(table_nodes, eng_indexes)
+  end
+  translations
+end
+
+seed_cards = seed_data(all_links)
+
 puts "These cards have been generated:"
-Card.all.each {|x| puts "Original Text: #{x.original_text} | Translated Text: #{x.translated_text} | Review Date: #{x.review_date}" }
+seed_cards.each {|x| puts "Original Text: #{x.original_text} | Translated Text: #{x.translated_text} | Review Date: #{x.review_date}" }
+
+
 
