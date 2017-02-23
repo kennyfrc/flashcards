@@ -65,7 +65,7 @@ end
 seed_cards = seed_data(all_links)
 
 puts "These cards have been generated:"
-seed_cards.each { |x| puts "Original Text: #{ x.original_text } | Translated Text: #{ x.translated_text } | Review Date: #{ x.review_date }" }
+seed_cards.each { |x| puts "Original Text: #{x.original_text} | Translated Text: #{x.translated_text} | Review Date: #{x.review_date}" }
 
 
 
