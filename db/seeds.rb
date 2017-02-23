@@ -5,7 +5,7 @@ agent = Mechanize.new
 all_links = []
 initial_link = 'http://www.languagedaily.com/learn-german/vocabulary/common-german-words'
 page = agent.get(initial_link)
-other_links = page.links.uniq {|link| link.uri.to_s.match('/common-german-words-')}
+other_links = page.links.uniq { |link| link.uri.to_s.match('/common-german-words-') }
 other_links.each do |link|
   all_links << "http://www.languagedaily.com#{link.uri}" if link.uri.to_s != ''
 end
@@ -24,7 +24,7 @@ def indexes_of_eng_translations(nodes)
 end
 
 def german_words(nodes)
-  nodes.select {|td| td['class'] == 'bigLetter'}.map {|tag| tag.content}
+  nodes.select { |td| td['class'] == 'bigLetter' }.map { |tag| tag.content }
 end
 
 def english_translations(nodes, indexes)
@@ -38,7 +38,7 @@ def english_translations(nodes, indexes)
 end
 
 def generate_translations(nodes, english_indexes)
-  eng_translations =  english_translations(nodes, english_indexes)
+  eng_translations = english_translations(nodes, english_indexes)
   de_words = german_words(nodes)
   translation_pairs = de_words.zip(eng_translations)
 
@@ -65,7 +65,7 @@ end
 seed_cards = seed_data(all_links)
 
 puts "These cards have been generated:"
-seed_cards.each {|x| puts "Original Text: #{x.original_text} | Translated Text: #{x.translated_text} | Review Date: #{x.review_date}" }
+seed_cards.each { |x| puts "Original Text: #{ x.original_text } | Translated Text: #{ x.translated_text } | Review Date: #{ x.review_date }" }
 
 
 
