@@ -4,6 +4,8 @@ class Card < ApplicationRecord
 
   before_create :default_review_algorithm
 
+  scope :random_card, -> {order("RANDOM()").first}
+
   REVIEW_TIME_GAP = 3
 
   protected

@@ -1,5 +1,5 @@
 <head>
-  <title>Flashcards</title>
+  <title>Flashcard Manager (DE/EN)</title>
   <link rel="stylesheet" href="application.css">
 </head>
 
@@ -7,7 +7,7 @@
   <section id="container">
 
     <header class="clearfix">
-      <h1>Flashcards</h1>
+      <h1>Flashcard Manager (DE/EN)</h1>
       <ul class="navigation-links">
         <li><%= link_to 'All Cards', cards_path %></li>
         <li><%= link_to 'Add Card', new_card_path %></li>
@@ -16,7 +16,7 @@
 
     <section>
       <p style="font-size: 22px;">
-         The first convenient flash cards manager in the world. That's it.
+         Translated Text: <%= @card.translated_text %> <br>
       </p>
     </section>
 

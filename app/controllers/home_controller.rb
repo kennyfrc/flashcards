@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
-  def index
+  def welcome
+    @card = Card.random_card
   end
 end
