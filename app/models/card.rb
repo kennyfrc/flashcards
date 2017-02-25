@@ -18,10 +18,6 @@ class Card < ApplicationRecord
     where("review_date < ?", DateTime.now)
   end
 
-  def check
-    translated_text
-  end
-
   def add_three_days
     new_review_date = review_date + REVIEW_TIME_GAP
     update(review_date: new_review_date)
