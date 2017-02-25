@@ -9,20 +9,28 @@
   </head>
 
   <body>
-    <% if flash[:notice] %>
-      <div class="alert alert-success">
-        <%= flash[:notice] %>
-      </div>
-    <% elsif flash[:error] %>
-      <div class="alert alert-danger">
-        <%= flash[:error] %>
-      </div>
-    <% elsif flash[:alert] %>
-      <div class="alert alert-warning">
-        <%= flash[:alert] %>
-      </div>
-    <% end %>
-
-    <%= yield %>
+  <section id="container">
+    <header class="clearfix">
+      <h1>Flashcard Manager (DE/EN)</h1>
+      <ul class="navigation-links">
+        <li><%= link_to 'All Cards', cards_path %></li>
+        <li><%= link_to 'Add Card', new_card_path %></li>
+      </ul>
+    </header>
+      <% if flash[:notice] %>
+        <div class="alert alert-success">
+          <%= flash[:notice] %>
+        </div>
+      <% elsif flash[:error] %>
+        <div class="alert alert-danger">
+          <%= flash[:error] %>
+        </div>
+      <% elsif flash[:alert] %>
+        <div class="alert alert-warning">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+      <%= yield %>
+  </section>
   </body>
 </html>
