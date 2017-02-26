@@ -6,6 +6,24 @@ class Card < ApplicationRecord
 
   REVIEW_TIME_GAP = 3
 
+  def self.random
+    return nil if due_today.empty?
+    due_today.order("RANDOM()").first
+  end
+
+  def self.due_today
+    where("review_date < ?", DateTime.now)
+  end
+
+  def update_review_date
+    new_review_date = review_date + REVIEW_TIME_GAP
+    update(review_date: new_review_date)
+  end
+
+  def right_translation?(answer)
+    answer.casecmp?(original_text)
+  end
+
   protected
 
   def default_review_algorithm

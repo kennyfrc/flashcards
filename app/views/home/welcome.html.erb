@@ -1,0 +1,10 @@
+<section>
+  <p style="font-size: 22px;">
+  <% if @card %>
+     Translated Text: <%= @card.translated_text %> <br>
+     <%= render 'quiz' %>
+  <% else %>
+     No more due cards!
+  <% end %>
+  </p>
+</section>
