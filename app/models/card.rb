@@ -21,7 +21,9 @@ class Card < ApplicationRecord
   end
 
   def right_translation?(answer)
-    answer.casecmp?(original_text)
+    sanitized_answer = answer.gsub(/[\s,\W+]/, '')
+    sanitized_orig_text = original_text.gsub(/[\s,\W+]/, '')
+    sanitized_answer.casecmp?(sanitized_orig_text)
   end
 
   protected

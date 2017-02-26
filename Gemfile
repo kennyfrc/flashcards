@@ -21,7 +21,6 @@ gem 'rails', '~> 5.0.1'
 gem 'nokogiri'
 # Use mechanize to automate a click
 gem 'mechanize'
-
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use simple_form for forms
@@ -52,6 +51,8 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rspec-rails'
+  gem 'pry-rails'
 end
 
 group :development do
