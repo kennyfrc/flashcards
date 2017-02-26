@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 describe Card do
-
   before do
-    @card = Card.create(original_text: "How are you?", translated_text: "Kamusta?", review_date: DateTime.new(2017,2,24))
+    @card = Card.create(original_text: "How are you?", translated_text: "Kamusta?", review_date: DateTime.new(2017, 2, 24))
   end
 
   describe "card class methods" do
@@ -21,17 +20,16 @@ describe Card do
 
     describe "self.random" do
       it "returns nil if it's empty" do
-        Card.none.random.should == nil
+        Card.none.random.should.nil?
       end
     end
   end
 
   describe "card instance methods" do
-
     describe "#update_review_date" do
       it "adds three days" do
         @card.update_review_date
-        expect(@card.review_date).to eq(DateTime.new(2017,2,27))
+        expect(@card.review_date).to eq(DateTime.new(2017, 2, 27))
       end
     end
 
