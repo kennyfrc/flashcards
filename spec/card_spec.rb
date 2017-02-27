@@ -11,19 +11,13 @@ describe Card do
         expect(Card.due_today.count).to eq(1)
       end
     end
-
-    describe "self.random" do
-      it "should return the exact same card" do
-        expect(Card.random.id).to eq(@card.id)
-      end
-    end
   end
 
   describe "card instance methods" do
     describe "#update_review_date" do
       it "adds three days" do
         @card.update_review_date
-        expect(@card.review_date.strftime("%m/%d/%y")).to eq(3.days.from_now.strftime("%m/%d/%y"))
+        expect(@card.review_date.to_date).to eq(3.days.from_now.to_date)
       end
     end
 
