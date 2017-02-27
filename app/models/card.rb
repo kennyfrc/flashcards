@@ -7,7 +7,6 @@ class Card < ApplicationRecord
   REVIEW_TIME_GAP = 3
 
   def self.random
-    return nil if due_today.empty?
     due_today.order("RANDOM()").first
   end
 
