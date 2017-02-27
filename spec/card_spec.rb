@@ -2,25 +2,19 @@ require 'rails_helper'
 
 describe Card do
   before do
-    @card = Card.create(original_text: "How are you?", translated_text: "Kamusta?", review_date: DateTime.new(2017, 2, 24))
+    @card = Card.create(original_text: "How are you?", translated_text: "Kamusta?", review_date: DateTime.now)
   end
 
   describe "card class methods" do
     describe "self.due_today" do
       it "should know that 1 card is due today" do
-        Card.due_today.count.should == 1
+        expect(Card.due_today.count).to eq(1)
       end
     end
 
     describe "self.random" do
       it "should return the exact same card" do
-        Card.random.object_id == @card.object_id
-      end
-    end
-
-    describe "self.random" do
-      it "returns nil if it's empty" do
-        Card.none.random.should.nil?
+        expect(Card.random.id).to eq(@card.id)
       end
     end
   end
@@ -29,7 +23,7 @@ describe Card do
     describe "#update_review_date" do
       it "adds three days" do
         @card.update_review_date
-        expect(@card.review_date).to eq(DateTime.new(2017, 2, 27))
+        expect(@card.review_date.strftime("%m/%d/%y")).to eq(3.days.from_now.strftime("%m/%d/%y"))
       end
     end
 
@@ -48,6 +42,14 @@ describe Card do
 
       it "return true if the user messed up spacing" do
         expect(@card.right_translation?("   How are you?  ")).to eq(true)
+      end
+
+      it "return false if the user misspelled" do
+        expect(@card.right_translation?("How are yuo?")).to eq(false)
+      end
+
+      it "return false if the user gave the wrong answer" do
+        expect(@card.right_translation?("Hello")).to eq(false)    
       end
     end
   end
