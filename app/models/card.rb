@@ -7,7 +7,6 @@ class Card < ApplicationRecord
   REVIEW_TIME_GAP = 3
 
   def self.random
-    return nil if due_today.empty?
     due_today.order("RANDOM()").first
   end
 
@@ -21,7 +20,9 @@ class Card < ApplicationRecord
   end
 
   def right_translation?(answer)
-    answer.casecmp?(original_text)
+    sanitized_answer = answer.gsub(/[\s,\W+]/, '')
+    sanitized_orig_text = original_text.gsub(/[\s,\W+]/, '')
+    sanitized_answer.casecmp?(sanitized_orig_text)
   end
 
   protected

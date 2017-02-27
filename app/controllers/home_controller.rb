@@ -9,7 +9,7 @@ class HomeController < ApplicationController
       flash[:notice] = "Right!"
       @card.update_review_date
     else
-      flash[:error] = "Wrong!"
+      flash[:error] = "Wrong! (Or ensure your spelling is correct)"
     end
   end
 end
