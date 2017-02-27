@@ -49,7 +49,7 @@ describe Card do
       end
 
       it "return false if the user gave the wrong answer" do
-        expect(@card.right_translation?("Hello")).to eq(false)    
+        expect(@card.right_translation?("Hello")).to eq(false)
       end
     end
   end
