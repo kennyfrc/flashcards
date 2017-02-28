@@ -3,7 +3,7 @@ require 'support/factory_girl.rb'
 
 describe Card do
   before do
-    @card = create(:card)  
+    @card = create(:card)
   end
 
   describe "card class methods" do
