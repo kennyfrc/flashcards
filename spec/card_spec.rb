@@ -1,8 +1,9 @@
 require 'rails_helper'
+require 'support/factory_girl.rb'
 
 describe Card do
   before do
-    @card = Card.create(original_text: "How are you?", translated_text: "Kamusta?", review_date: DateTime.now)
+    @card = create(:card)  
   end
 
   describe "card class methods" do
@@ -17,7 +18,7 @@ describe Card do
     describe "#update_review_date" do
       it "adds three days" do
         @card.update_review_date
-        expect(@card.review_date.to_date).to eq(3.days.from_now.to_date)
+        expect(@card.review_date.to_date).to eq(3.days.from_now.getutc.to_date)
       end
     end
 
