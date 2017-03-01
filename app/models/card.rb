@@ -11,7 +11,7 @@ class Card < ApplicationRecord
   end
 
   def self.due_today
-    where("review_date < ?", DateTime.now)
+    where("review_date <= ?", DateTime.now.to_date)
   end
 
   def update_review_date
