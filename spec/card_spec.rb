@@ -45,11 +45,5 @@ describe Card do
         expect(card.right_translation?("Hello")).to eq(false)
       end
     end
-
-    describe "user" do
-      it "validates that the card belongs to a user" do
-        expect(card.user.name).to eq("kenn")
-      end
-    end
   end
 end
