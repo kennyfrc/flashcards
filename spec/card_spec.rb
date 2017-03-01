@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Card do
+  let!(:user) { create(:user) }
   let!(:card) { create(:card) }
 
   describe "card class methods" do
@@ -42,6 +43,12 @@ describe Card do
 
       it "return false if the user gave the wrong answer" do
         expect(card.right_translation?("Hello")).to eq(false)
+      end
+    end
+
+    describe "user" do
+      it "validates that the card belongs to a user" do
+        expect(card.user.name).to eq("kenn")
       end
     end
   end

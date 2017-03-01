@@ -4,6 +4,7 @@ class CreateCards < ActiveRecord::Migration[5.0]
       t.string :original_text
       t.string :translated_text
       t.date :review_date
+      t.integer :user_id
 
       t.timestamps
     end
