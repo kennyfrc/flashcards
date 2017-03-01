@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Card do
+  let!(:user) { create(:user) }
   let!(:card) { create(:card) }
 
   describe "card class methods" do

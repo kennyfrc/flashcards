@@ -1,6 +1,9 @@
 require 'open-uri'
 require 'mechanize'
 
+User.create(name: "kenn", email: "kenn@domain.com")
+User.create(name: "francis", email: "francis@domain.com")
+
 agent = Mechanize.new
 all_links = []
 initial_link = 'http://www.languagedaily.com/learn-german/vocabulary/common-german-words'
@@ -45,7 +48,8 @@ def generate_translations(nodes, english_indexes)
   translation_pairs.each do |pair|
     Card.create(
       original_text: pair[0],
-      translated_text: pair[1]
+      translated_text: pair[1],
+      user_id: rand(1..2)
     )
   end
 
