@@ -7,7 +7,7 @@ describe Card do
   describe "card class methods" do
     describe "self.due_today" do
       it "should know that 1 card is due today" do
-        expect(Card.due_today.count).to eq(1)
+        expect(Card.due_today(user.id).count).to eq(1)
       end
     end
   end

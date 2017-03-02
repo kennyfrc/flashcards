@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :require_login, only: [:index, :new, :create]
   def new
     @user = User.new
   end
@@ -13,6 +14,26 @@ class UsersController < ApplicationController
       flash[:error] = "Please enter a valid email or ensure your PW has at least 8 characters"
       render 'new'
     end
+  end
+
+  def edit
+    @user = User.find(current_user.id)
+  end
+
+  def update
+    @user = User.find(current_user.id)
+
+    if @user.update(user_params)
+      flash[:notice] = "User successfully updated!"
+      redirect_to @user
+    else
+      flash[:error] = "Please review the errors below."
+      render 'edit'
+    end
+  end
+
+  def show
+    @user = User.find(current_user.id)
   end
 
   private

@@ -1,5 +1,6 @@
 <%= simple_form_for @card, url: { action: "check" }, method: "get" do |c| %>
   <%= c.input :original_text, label: "Enter your Answer Here", input_html: { value: ''} %>
   <%= c.input :hidden_id, as: "hidden", input_html: {value: @card.id} %>
+  <%= c.input :user_id, as: "hidden", input_html: {value: current_user.id} %>
   <%= c.button :submit, value: "Check" %>
 <% end %>

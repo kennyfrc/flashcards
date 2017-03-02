@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def welcome
-    @card = Card.random
+    @card = Card.random(current_user.id)
   end
 
   def check

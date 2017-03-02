@@ -3,6 +3,6 @@ FactoryGirl.define do
     original_text "How are you?"
     translated_text "Kamusta?"
     review_date DateTime.now.getutc
-    user
+    user_id 1
   end
 end

@@ -68,6 +68,12 @@ end
 
 seed_cards = seed_data(all_links)
 
+# Force due cards today for testing
+Card.create(original_text: "hello", translated_text: "hello 2", review_date: DateTime.now, user_id: 2)
+Card.create(original_text: "hello 2", translated_text: "hello 3", review_date: DateTime.now, user_id: 2)
+Card.create(original_text: "hello", translated_text: "hello 2", review_date: DateTime.now, user_id: 1)
+Card.create(original_text: "hello 2", translated_text: "hello 3", review_date: DateTime.now, user_id: 1)
+
 puts "These cards have been generated:"
 seed_cards.each { |x| puts "Original Text: #{x.original_text} | Translated Text: #{x.translated_text} | Review Date: #{x.review_date}" }
 

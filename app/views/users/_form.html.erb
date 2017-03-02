@@ -1,8 +1,8 @@
-# app/views/users/_form.html.erb
+<h1>Register</h1>
 
 <%= simple_form_for @user do |f| %>
   <%= f.input :email, label: "Email" %>
   <%= f.input :password, label: "Password" %>
   <%= f.input :password_confirmation, label: "Password Confirmation" %>
-  <%= f.button :submit, value: "Register" %>
+  <%= f.button :submit, value: "Submit" %>
 <% end %>
