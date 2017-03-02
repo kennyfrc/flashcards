@@ -17,6 +17,8 @@ gem 'rails', '~> 5.0.1'
  group :development do
    gem 'sqlite3'
  end
+# Use sorcery for auth
+gem 'sorcery'
 # Use nokogiri for seed data
 gem 'nokogiri'
 # Use mechanize to automate a click

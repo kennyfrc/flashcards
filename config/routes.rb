@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  get 'users/new'
+
   resources :cards
+  resources :users, only: [:new, :create]
 
   get '/check', to: 'home#check'
 

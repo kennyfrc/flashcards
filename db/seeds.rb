@@ -1,8 +1,8 @@
 require 'open-uri'
 require 'mechanize'
 
-User.create(name: "kenn", email: "kenn@domain.com")
-User.create(name: "francis", email: "francis@domain.com")
+User.create(email: "kenn@domain.com", password: "test12345", password_confirmation: "test12345")
+User.create(email: "francis@domain.com", password: "test12345", password_confirmation: "test12345")
 
 agent = Mechanize.new
 all_links = []
