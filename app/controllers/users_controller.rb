@@ -17,11 +17,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(current_user.id)
+    @user = current_user
   end
 
   def update
-    @user = User.find(current_user.id)
+    @user = current_user
 
     if @user.update(user_params)
       flash[:notice] = "User successfully updated!"
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(current_user.id)
+    @user = current_user
   end
 
   private

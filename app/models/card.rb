@@ -7,12 +7,12 @@ class Card < ApplicationRecord
 
   REVIEW_TIME_GAP = 3
 
-  def self.random(current_user_id)
-    due_today(current_user_id).order("RANDOM()").first
+  def self.random
+    due_today.order("RANDOM()").first
   end
 
-  def self.due_today(current_user_id)
-    where("review_date <= ? and user_id = ?", DateTime.now.to_date, current_user_id)
+  def self.due_today
+    where("review_date <= ?", DateTime.now.to_date)
   end
 
   def update_review_date
