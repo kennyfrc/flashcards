@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301141811) do
+ActiveRecord::Schema.define(version: 20170302155359) do
 
   create_table "cards", force: :cascade do |t|
     t.string   "original_text"
@@ -22,10 +22,12 @@ ActiveRecord::Schema.define(version: 20170301141811) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "email",            null: false
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end

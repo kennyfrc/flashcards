@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
+  resources :sessions, only: [:new, :create, :destroy]
   resources :cards
+  resources :users
+
+  post :signin, to: "sessions#create"
+  get :signin, to: "sessions#new"
+  post :signout, to: "sessions#destroy"
 
   get '/check', to: 'home#check'
 

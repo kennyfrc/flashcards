@@ -1,8 +1,8 @@
 require 'open-uri'
 require 'mechanize'
 
-User.create(name: "kenn", email: "kenn@domain.com")
-User.create(name: "francis", email: "francis@domain.com")
+user1 = User.create(email: "kenn@domain.com", password: "test12345", password_confirmation: "test12345")
+user2 = User.create(email: "francis@domain.com", password: "test12345", password_confirmation: "test12345")
 
 agent = Mechanize.new
 all_links = []
@@ -67,6 +67,12 @@ def seed_data(links)
 end
 
 seed_cards = seed_data(all_links)
+
+# Force due cards today for testing
+Card.create(original_text: "hello", translated_text: "hello 2", review_date: DateTime.now, user: user1)
+Card.create(original_text: "hello 2", translated_text: "hello 3", review_date: DateTime.now, user: user2)
+Card.create(original_text: "hello", translated_text: "hello 2", review_date: DateTime.now, user: user1)
+Card.create(original_text: "hello 2", translated_text: "hello 3", review_date: DateTime.now, user: user2)
 
 puts "These cards have been generated:"
 seed_cards.each { |x| puts "Original Text: #{x.original_text} | Translated Text: #{x.translated_text} | Review Date: #{x.review_date}" }
